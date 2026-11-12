@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Convert currencies using the latest available exchange rates.">
+
+    <title>CurrencyConvert | Currency Converter</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="app-container">
+
+        <!-- HEADER -->
+        <header class="header">
+
+            <a href="#" class="logo">
+                <span class="logo-icon">↗</span>
+                <span>Currency<span class="logo-highlight">Convert</span></span>
+            </a>
+
+            <div class="live-status">
+                <span class="status-dot"></span>
+                <span>Exchange Rates</span>
+            </div>
+
+        </header>
+
+
+        <!-- CONVERTER -->
+        <section class="converter-section">
+
+            <div class="intro">
+                <h1>Currency Converter</h1>
+                <p>Convert currencies with the latest available exchange rates.</p>
+            </div>
+
+
+            <div class="converter-card">
+
+                <input type="hidden" id="fromCurrency" value="INR">
+                <input type="hidden" id="toCurrency" value="INR">
+
+                <!-- FROM CURRENCY -->
+                <div class="currency-group">
+
+                    <label for="amount">Amount</label>
+
+                    <div class="currency-box">
+
+                        <input
+                            type="number"
+                            id="amount"
+                            value="1"
+                            min="0"
+                            step="any"
+                            placeholder="Enter amount"
+                            inputmode="decimal"
+                            autocomplete="off"
+                        >
+
+                        <div class="currency-select">
+
+                            <span class="currency-flag" id="fromFlag">🇮🇳</span>
+
+                            <button
+                                type="button"
+                                class="currency-trigger"
+                                id="fromTrigger"
+                                aria-label="Select source currency"
+                            >
+                                INR <span>⌄</span>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <span class="currency-name" id="fromName">
+                        Indian Rupee
+                    </span>
+
+                </div>
+
+
+                <!-- SWAP -->
+                <div class="swap-container">
+
+                    <button
+                        type="button"
+                        class="swap-btn"
+                        id="swapBtn"
+                        aria-label="Swap currencies"
+                        title="Swap currencies"
+                    >
+                        ⇅
+                    </button>
+
+                </div>
+
+
+                <!-- TO CURRENCY -->
+                <div class="currency-group">
+
+                    <label>Convert To</label>
+
+                    <div class="currency-box result-box">
+
+                        <div
+                            class="result-amount"
+                            id="result"
+                            aria-live="polite"
+                        >
+                            --
+                        </div>
+
+                        <div class="currency-select">
+
+                            <span class="currency-flag" id="toFlag">🇺🇸</span>
+
+                            <button
+                                type="button"
+                                class="currency-trigger"
+                                id="toTrigger"
+                                aria-label="Select target currency"
+                            >
+                                USD <span>⌄</span>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <span class="currency-name" id="toName">
+                        US Dollar
+                    </span>
+
+                </div>
+
+
+                <!-- RATE INFORMATION -->
+                <div class="exchange-info">
+
+                    <div class="exchange-rate">
+
+                        <span class="info-label">Exchange Rate</span>
+
+                        <strong id="exchangeRate">Loading...</strong>
+
+                    </div>
+
+                    <div class="update-info">
+
+                        <span class="info-label">Last Updated</span>
+
+                        <strong id="lastUpdated">Checking...</strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CONVERT BUTTON -->
+                <button
+                    type="button"
+                    class="convert-btn"
+                    id="convertBtn"
+                >
+                    <span id="convertText">Convert Currency</span>
+                    <span class="convert-arrow">→</span>
+                </button>
+
+
+                <!-- ERROR MESSAGE -->
+                <p
+                    id="errorMessage"
+                    class="error-message"
+                    role="alert"
+                ></p>
+
+            </div>
+
+
+            <p class="footer-note">
+                Exchange rates are indicative and may differ from bank or card rates.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- SEARCHABLE CURRENCY MODAL -->
+    <div
+        class="currency-modal"
+        id="currencyModal"
+        aria-hidden="true"
+    >
+
+        <div
+            class="currency-modal-content"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modalTitle"
+        >
+
+            <div class="modal-header">
+
+                <h3 id="modalTitle">Select Currency</h3>
+
+                <button
+                    type="button"
+                    id="closeCurrencyModal"
+                    aria-label="Close currency selector"
+                >
+                    &times;
+                </button>
+
+            </div>
+
+
+            <!-- SEARCH -->
+            <div class="currency-search">
+
+                <span>⌕</span>
+
+                <input
+                    type="search"
+                    id="currencySearch"
+                    placeholder="Search currency or country..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <!-- CURRENCY LIST -->
+            <div
+                class="currency-list"
+                id="currencyList"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>

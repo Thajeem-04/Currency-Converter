@@ -1,0 +1,887 @@
+/* =========================================
+   1. GLOBAL SETTINGS
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --white: #ffffff;
+    --black: #111111;
+    --gray: #777777;
+    --light-gray: #f7f7f7;
+    --border: #eaeaea;
+    --success: #16a34a;
+    --danger: #dc2626;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Inter", sans-serif;
+    background: var(--white);
+    color: var(--black);
+    padding: 0 20px;
+}
+
+button,
+input {
+    font-family: inherit;
+}
+
+
+/* =========================================
+   2. MAIN CONTAINER
+========================================= */
+
+.app-container {
+    width: 100%;
+    max-width: 1100px;
+    min-height: 100vh;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* =========================================
+   3. HEADER
+========================================= */
+
+.header {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    text-decoration: none;
+    color: var(--black);
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: -0.7px;
+}
+
+.logo-icon {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    background: var(--black);
+    color: var(--white);
+    border-radius: 10px;
+    font-size: 22px;
+}
+
+.logo-highlight {
+    color: var(--gray);
+}
+
+.live-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #555555;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--success);
+    border-radius: 50%;
+}
+
+
+/* =========================================
+   4. CONVERTER SECTION
+========================================= */
+
+.converter-section {
+    width: 100%;
+    max-width: 480px;
+    margin: auto;
+    padding: 30px 0;
+}
+
+.intro {
+    text-align: center;
+    margin-bottom: 23px;
+}
+
+.intro h1 {
+    font-size: clamp(25px, 4vw, 33px);
+    font-weight: 800;
+    letter-spacing: -1.4px;
+    margin-bottom: 8px;
+}
+
+.intro p {
+    color: var(--gray);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   5. CONVERTER CARD
+========================================= */
+
+.converter-card {
+    width: 100%;
+    padding: 23px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.045);
+}
+
+
+/* =========================================
+   6. CURRENCY GROUP
+========================================= */
+
+.currency-group {
+    width: 100%;
+}
+
+.currency-group label {
+    display: block;
+    margin-bottom: 9px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.currency-box {
+    min-height: 61px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 12px;
+    background: var(--light-gray);
+    border: 1px solid transparent;
+    border-radius: 11px;
+    transition: 0.2s ease;
+}
+
+.currency-box:focus-within {
+    border-color: #aaaaaa;
+    background: var(--white);
+}
+
+.currency-box input {
+    width: 100%;
+    min-width: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--black);
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.currency-box input::placeholder {
+    color: #aaaaaa;
+    font-size: 16px;
+}
+
+.currency-box input::-webkit-inner-spin-button,
+.currency-box input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.currency-box input[type="number"] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+.currency-select {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    flex-shrink: 0;
+}
+
+.currency-flag {
+    font-size: 22px;
+    line-height: 1;
+}
+
+.currency-trigger {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 0;
+    border: none;
+    background: transparent;
+    color: var(--black);
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.currency-trigger span {
+    color: var(--gray);
+    font-size: 17px;
+}
+
+.currency-name {
+    display: block;
+    margin-top: 7px;
+    color: var(--gray);
+    font-size: 11px;
+    font-weight: 500;
+}
+
+
+/* =========================================
+   7. RESULT
+========================================= */
+
+.result-amount {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: -0.6px;
+}
+
+
+/* =========================================
+   8. SWAP BUTTON
+========================================= */
+
+.swap-container {
+    height: 47px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.swap-btn {
+    width: 37px;
+    height: 37px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: var(--white);
+    color: var(--black);
+    font-size: 21px;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.swap-btn:hover {
+    background: var(--black);
+    color: var(--white);
+    transform: rotate(180deg);
+}
+
+.swap-btn:active {
+    transform: scale(0.94);
+}
+
+
+/* =========================================
+   9. EXCHANGE INFORMATION
+========================================= */
+
+.exchange-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 23px;
+    padding: 15px;
+    background: var(--light-gray);
+    border-radius: 11px;
+}
+
+.exchange-rate,
+.update-info {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    min-width: 0;
+}
+
+.info-label {
+    color: var(--gray);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.exchange-info strong {
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================
+   10. CONVERT BUTTON
+========================================= */
+
+.convert-btn {
+    width: 100%;
+    min-height: 50px;
+    margin-top: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: none;
+    border-radius: 10px;
+    background: var(--black);
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.convert-btn:hover:not(:disabled) {
+    background: #333333;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.convert-btn:active {
+    transform: scale(0.98);
+}
+
+.convert-arrow {
+    font-size: 18px;
+}
+
+.convert-btn:disabled {
+    opacity: 0.65;
+    cursor: wait;
+}
+
+
+/* =========================================
+   11. ERROR MESSAGE
+========================================= */
+
+.error-message {
+    display: none;
+    margin-top: 12px;
+    color: var(--danger);
+    font-size: 11px;
+    text-align: center;
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   12. FOOTER
+========================================= */
+
+.footer-note {
+    margin-top: 15px;
+    color: var(--gray);
+    font-size: 10px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+
+/* =========================================
+   13. CURRENCY MODAL
+========================================= */
+
+.currency-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+}
+
+.currency-modal.active {
+    display: flex;
+}
+
+.currency-modal-content {
+    width: 100%;
+    max-width: 390px;
+    max-height: min(520px, 85vh);
+    display: flex;
+    flex-direction: column;
+    padding: 18px;
+    overflow: hidden;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.modal-header h3 {
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.modal-header button {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: transparent;
+    color: var(--black);
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.currency-search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 12px;
+    background: var(--light-gray);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+}
+
+.currency-search span {
+    color: var(--gray);
+    font-size: 20px;
+}
+
+.currency-search input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--black);
+    font-size: 12px;
+}
+
+.currency-list {
+    margin-top: 10px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+.currency-option {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 11px 8px;
+    border: none;
+    border-radius: 8px;
+    background: var(--white);
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.currency-option:hover,
+.currency-option:focus-visible {
+    background: var(--light-gray);
+}
+
+.option-flag {
+    font-size: 22px;
+}
+
+.option-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.option-name {
+    display: block;
+    color: var(--black);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.option-country {
+    display: block;
+    margin-top: 3px;
+    color: var(--gray);
+    font-size: 10px;
+}
+
+.option-code {
+    color: var(--black);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.no-currency {
+    padding: 25px 10px;
+    color: var(--gray);
+    font-size: 12px;
+    text-align: center;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+
+/* =========================================
+   14. TABLET RESPONSIVE
+========================================= */
+
+@media (max-width: 768px) {
+
+    body {
+        padding: 0 18px;
+    }
+
+    .header {
+        height: 65px;
+    }
+
+    .converter-section {
+        max-width: 460px;
+        padding: 28px 0;
+    }
+
+    .converter-card {
+        padding: 21px;
+    }
+
+}
+
+
+/* =========================================
+   15. MOBILE RESPONSIVE
+========================================= */
+
+@media (max-width: 480px) {
+
+    body {
+        padding: 0 13px;
+    }
+
+    .header {
+        height: 60px;
+    }
+
+    .logo {
+        gap: 7px;
+        font-size: 16px;
+    }
+
+    .logo-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 20px;
+    }
+
+    .live-status {
+        font-size: 9px;
+        gap: 5px;
+    }
+
+    .status-dot {
+        width: 7px;
+        height: 7px;
+    }
+
+    .converter-section {
+        padding: 25px 0;
+    }
+
+    .intro {
+        margin-bottom: 19px;
+    }
+
+    .intro h1 {
+        font-size: 25px;
+        letter-spacing: -1px;
+    }
+
+    .intro p {
+        font-size: 11px;
+    }
+
+    .converter-card {
+        padding: 16px;
+        border-radius: 15px;
+    }
+
+    .currency-box {
+        min-height: 56px;
+        padding: 9px;
+        gap: 5px;
+    }
+
+    .currency-box input,
+    .result-amount {
+        font-size: 18px;
+    }
+
+    .currency-select {
+        gap: 5px;
+    }
+
+    .currency-flag {
+        font-size: 19px;
+    }
+
+    .currency-trigger {
+        gap: 4px;
+        font-size: 12px;
+    }
+
+    .exchange-info {
+        padding: 12px 9px;
+        gap: 8px;
+    }
+
+    .exchange-info strong {
+        font-size: 10px;
+    }
+
+    .info-label {
+        font-size: 8px;
+    }
+
+    .convert-btn {
+        min-height: 46px;
+        font-size: 12px;
+    }
+
+    .currency-modal-content {
+        max-width: 100%;
+        padding: 15px;
+    }
+
+}
+
+
+/* =========================================
+   16. SMALL MOBILE
+========================================= */
+
+@media (max-width: 350px) {
+
+    .logo {
+        font-size: 14px;
+    }
+
+    .live-status {
+        font-size: 8px;
+    }
+
+    .converter-card {
+        padding: 12px;
+    }
+
+    .currency-box input,
+    .result-amount {
+        font-size: 16px;
+    }
+
+    .currency-trigger {
+        font-size: 11px;
+    }
+
+    .exchange-info {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================================
+   17. ACCESSIBILITY
+========================================= */
+
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid #777777;
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+
+}
+
+/* =========================================
+   FINAL DESKTOP FULL-WIDTH LAYOUT FIX
+========================================= */
+
+/* Global width */
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Main application */
+
+.app-container {
+    width: 100%;
+    max-width: none;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+/* Full-width header / navbar */
+
+.header {
+    width: 100%;
+    height: 75px;
+    padding: 0 clamp(20px, 5vw, 75px);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+}
+
+/* Converter positioning */
+
+.converter-section {
+    width: calc(100% - 32px);
+    max-width: 520px;
+    min-height: calc(100vh - 75px);
+    margin: 0 auto;
+    padding: 30px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Converter card */
+
+.converter-card {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+}
+
+/* Footer */
+
+.footer-note {
+    width: 100%;
+    padding: 0 15px 18px;
+}
+
+/* =========================================
+   LARGE DESKTOP
+========================================= */
+
+@media (min-width: 1400px) {
+
+    .header {
+        padding-left: 6%;
+        padding-right: 6%;
+    }
+
+    .converter-section {
+        max-width: 540px;
+    }
+
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 768px) {
+
+    .header {
+        height: 65px;
+        padding: 0 22px;
+    }
+
+    .converter-section {
+        width: calc(100% - 36px);
+        max-width: 480px;
+        min-height: calc(100vh - 65px);
+        padding: 25px 0;
+    }
+
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+    .header {
+        height: 60px;
+        padding: 0 14px;
+    }
+
+    .converter-section {
+        width: 100%;
+        min-height: calc(100vh - 60px);
+        padding: 22px 12px;
+    }
+
+    .converter-card {
+        width: 100%;
+    }
+
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 350px) {
+
+    .header {
+        padding: 0 10px;
+    }
+
+    .converter-section {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+}
